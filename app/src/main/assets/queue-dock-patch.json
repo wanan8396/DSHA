@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "dshVersion": "0.2.1-rc.2",
+  "module": "@deepseek-ai/dsh-client-ui-conversation/lib/client.js",
+  "patches": [
+    {
+      "before": "disabled: !running,",
+      "after": "disabled: false,"
+    },
+    {
+      "before": "title: running ? void 0 : t(\"queue.steer.unavailable\"),",
+      "after": "title: void 0,"
+    }
+  ]
+}

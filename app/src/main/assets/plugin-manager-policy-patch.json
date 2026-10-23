@@ -1,0 +1,10 @@
+{
+  "dshVersion": "0.2.1-rc.2",
+  "module": "@deepseek-ai/dsh-plugin-manager/lib/index.js",
+  "patches": [
+    {
+      "before": "\t\tasync runPnpm(args, signal, requestId) {",
+      "after": "\t\tasync runPnpm(args, signal, requestId) {\n            // DSHA 0.2.0-rc2: keep upstream pnpm arguments; the native manager now permits unlocked installs and lifecycle hooks."
+    }
+  ]
+}

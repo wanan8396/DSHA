@@ -1,0 +1,127 @@
+{
+  "schema": 1,
+  "dshVersion": "0.2.1-rc.2",
+  "active": [
+    {
+      "asset": "composer-enter-patch.json",
+      "module": "@deepseek-ai/dsh-client-ui-conversation/lib/client.js"
+    },
+    {
+      "asset": "session-interaction-patch.json",
+      "module": "@deepseek-ai/dsh-client-ui-workspace/lib/client.js",
+      "markers": [
+        "DSHA_SESSION_INTERACTION_V2",
+        "dsha-session-open"
+      ]
+    },
+    {
+      "asset": "queue-agent-patch.json"
+    },
+    {
+      "asset": "queue-dock-patch.json"
+    },
+    {
+      "asset": "persona-compat-patch.json"
+    },
+    {
+      "asset": "subagent-navigation-patch.json"
+    },
+    {
+      "asset": "plugin-manager-policy-patch.json"
+    },
+    {
+      "asset": "plugin-manager-auto-enable-patch.json"
+    },
+    {
+      "asset": "office-fonts-patch.json"
+    },
+    {
+      "asset": "deepseek-messages-compat-patch.json"
+    },
+    {
+      "asset": "rc1-settings-migration-patch.json"
+    },
+    {
+      "asset": "language-patch.json"
+    },
+    {
+      "asset": "tooltip-entry-patch.json"
+    },
+    {
+      "asset": "frontend-static-cache-patch.json",
+      "markers": [
+        "DSHA_STATIC_CACHE_V2"
+      ]
+    },
+    {
+      "asset": "sidebar-layout-recovery-patch.json",
+      "markers": [
+        "DSHA_LAYOUT_RECOVERY_V1"
+      ]
+    },
+    {
+      "asset": "tool-stream-identity-patch.json"
+    },
+    {
+      "asset": "tool-block-identity-patch.json"
+    },
+    {
+      "asset": "tool-dispatch-validation-patch.json"
+    },
+    {
+      "asset": "tool-messages-history-patch.json"
+    },
+    {
+      "asset": "tool-history-display-patch.json"
+    },
+    {
+      "asset": "guard-tools-patch.json",
+      "markers": [
+        "DSHA_REQUIRED_POLICY_V1"
+      ]
+    },
+    {
+      "asset": "guard-bash-patch.json",
+      "markers": [
+        "DSHA_REQUIRED_POLICY_V1"
+      ]
+    },
+    {
+      "asset": "guard-fs-patch.json",
+      "markers": [
+        "DSHA_REQUIRED_POLICY_V1"
+      ]
+    },
+    {
+      "asset": "guard-editor-patch.json",
+      "markers": [
+        "DSHA_REQUIRED_POLICY_V1"
+      ]
+    }
+  ],
+  "specialized": [
+    "pdf-compat-patch.json",
+    "browser-bootstrap",
+    "client-combo-patch.json",
+    "lan-settings-persistence",
+    "workspace-directory-policy-patch.json"
+  ],
+  "retired": [
+    {
+      "asset": "agent-preset-patch.json",
+      "reason": "Upstream owns read-only preset session headings; preserve known legacy input only."
+    },
+    {
+      "asset": "models-navigation-patch.json",
+      "reason": "Upstream owns model settings navigation; do not restore rc1 UI behavior."
+    },
+    {
+      "asset": "web-integration/tooltip-patch.json",
+      "reason": "Old 0.1.5 component replacement preserved as history. Current rc2 interaction/entry recipes retain the upstream Tooltip and add dismissal only."
+    },
+    {
+      "asset": "tooltip-interaction-patch.json",
+      "reason": "0.2.1 重写了 web-frontend bundle（index-CN7NIWNw.js），tooltip dismissal 的 useCallback 特征串与变量名全变，无法在压缩产物上安全重定锚。tooltip-entry 的 cache-bust 仍在生效。"
+    }
+  ]
+}

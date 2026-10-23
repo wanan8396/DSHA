@@ -1,0 +1,538 @@
+package com.deepseekharness.app.runtime;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertThrows;
+import static org.junit.Assert.assertTrue;
+import com.deepseekharness.app.util.ColdInstallPlan.Mode;
+import java.io.IOException;
+import java.util.concurrent.atomic.AtomicReference;
+import org.junit.Test;
+
+public class RuntimeHostPortsTest {
+  @Test
+  public void coldPreparationRequiresClosedFullTrialAndKeepsRequestedDefault() throws Exception {
+    ColdHost host = new ColdHost(false);
+    assertThrows(
+        IOException.class,
+        () -> host.ports.prepareColdRuntime(host.root, Mode.BXROOT, host.sha, host.runtimeId));
+    try (var scope = host.ports.open()) {
+      host.ports.prepareColdRuntime(host.root, Mode.BXROOT, host.sha, host.runtimeId);
+      for (String incomplete : java.util.List.of("renderer", "processExited")) {
+        var proof = host.proof("bxroot");
+        proof.put(incomplete, false);
+        assertThrows(IOException.class, () -> host.ports.confirmColdRuntime(host.root, proof));
+      }
+      var wrongPlan = host.proof("bxroot");
+      wrongPlan.put("runtimeId", "2".repeat(64));
+      assertThrows(IOException.class, () -> host.ports.confirmColdRuntime(host.root, wrongPlan));
+      host.ports.confirmColdRuntime(host.root, host.proof("bxroot"));
+      assertEquals(Mode.BXROOT, host.committedMode);
+      assertEquals("bxroot", host.current.get().engine);
+      assertEquals(1, host.commits);
+      assertThrows(
+          IOException.class, () -> host.ports.confirmColdRuntime(host.root, host.proof("bxroot")));
+    }
+  }
+
+  @Test
+  public void compatibleTrialNeedsClosureAndRecordsActualWithoutOverwritingRequested()
+      throws Exception {
+    ColdHost host = new ColdHost(true);
+    try (var scope = host.ports.open()) {
+      host.ports.prepareColdRuntime(host.root, Mode.BXROOT, host.sha, host.runtimeId);
+      var proof = host.proof("proot");
+      assertThrows(IOException.class, () -> host.ports.confirmColdRuntime(host.root, proof));
+      proof.put("fallbackFrom", "bxroot");
+      proof.put("fallbackExitCode", "126");
+      assertThrows(IOException.class, () -> host.ports.confirmColdRuntime(host.root, proof));
+      proof.put("fallbackExitCode", 126L);
+      proof.put("processExited", false);
+      assertThrows(IOException.class, () -> host.ports.confirmColdRuntime(host.root, proof));
+      proof.put("processExited", true);
+      host.ports.confirmColdRuntime(host.root, proof);
+      assertEquals(Mode.PROOT_COMPAT, host.committedMode);
+      assertEquals("bxroot", host.current.get().engine);
+      assertTrue(host.current.get().disableProotSeccomp);
+      assertEquals("PROOT_COMPAT", host.preferences.get("cold_runtime_mode"));
+    }
+  }
+
+  @Test
+  public void historicalProrootModesAreReadableButCannotBePrepared() throws Exception {
+    ColdHost host = new ColdHost(false);
+    try (var scope = host.ports.open()) {
+      for (Mode retired : java.util.List.of(Mode.PROROOT, Mode.PROROOT_DYNAMIC))
+        assertThrows(
+            IOException.class,
+            () -> host.ports.prepareColdRuntime(host.root, retired, host.sha, host.runtimeId));
+      assertEquals(0, host.commits);
+    }
+  }
+
+  @Test
+  public void explicitProotDoesNotPrepareBxrootAndKeepsVerifiedProotFlags() throws Exception {
+    ColdHost host = new ColdHost(false);
+    host.current.set(new RuntimeHostPorts.Settings("ipv4", "proot", true, false));
+    try (var scope = host.ports.open()) {
+      assertThrows(
+          IOException.class,
+          () -> host.ports.prepareColdRuntime(host.root, Mode.BXROOT, host.sha, host.runtimeId));
+      host.ports.prepareColdRuntime(host.root, Mode.PROOT_COMPAT, host.sha, host.runtimeId);
+      host.ports.confirmColdRuntime(host.root, host.proof("proot"));
+      assertEquals("proot", host.current.get().engine);
+      assertTrue(host.current.get().disableProotSeccomp);
+    }
+  }
+
+  @Test
+  public void changedRootOrUserSelectionCannotPublishAndScopeDropsPendingChoice() throws Exception {
+    ColdHost host = new ColdHost(false);
+    try (var scope = host.ports.open()) {
+      host.ports.prepareColdRuntime(host.root, Mode.BXROOT, host.sha, host.runtimeId);
+      host.identity = "replacement-root";
+      assertThrows(
+          IOException.class, () -> host.ports.confirmColdRuntime(host.root, host.proof("bxroot")));
+      host.identity = "published-root";
+      host.preferences.put("container_runtime", "proot");
+      assertThrows(
+          IOException.class, () -> host.ports.confirmColdRuntime(host.root, host.proof("bxroot")));
+      host.preferences.clear();
+      host.current.set(new RuntimeHostPorts.Settings("ipv4", "proot", false, false));
+      assertThrows(
+          IOException.class, () -> host.ports.confirmColdRuntime(host.root, host.proof("bxroot")));
+      assertEquals(0, host.commits);
+    }
+    try (var next = host.ports.open()) {
+      assertThrows(
+          IOException.class, () -> host.ports.confirmColdRuntime(host.root, host.proof("bxroot")));
+    }
+  }
+
+  private static final class ColdHost {
+    final RuntimeHostPorts ports = new RuntimeHostPorts();
+    final java.io.File root = new java.io.File("published-root");
+    final String sha = "0".repeat(64), runtimeId = "1".repeat(64);
+    final java.util.Map<String, Object> preferences = new java.util.HashMap<>();
+    final AtomicReference<RuntimeHostPorts.Settings> current;
+    String identity = "published-root";
+    boolean automatic = true;
+    int commits;
+    Mode committedMode;
+
+    ColdHost(boolean noSeccomp) {
+      current =
+          new AtomicReference<>(new RuntimeHostPorts.Settings("ipv4", "bxroot", true, noSeccomp));
+      ports.install(
+          new RuntimeHostPorts.Provider() {
+            public RuntimeHostPorts.Settings snapshot() {
+              return current.get();
+            }
+
+            public boolean preferFastColdMode() {
+              return automatic;
+            }
+
+            public void stage(String value) {}
+
+            public void record(String kind, String detail) {}
+
+            public void failure(Throwable error) {}
+
+            public java.util.Map<String, Object> snapshotColdSelection() {
+              return java.util.Map.copyOf(preferences);
+            }
+
+            public String coldRuntimeIdentity(java.io.File checked) throws IOException {
+              if (!root.getCanonicalFile().equals(checked.getCanonicalFile()))
+                throw new IOException("fixture-root-changed");
+              return identity;
+            }
+
+            public RuntimeHostPorts.Settings successfulColdRuntime(
+                java.io.File checked, Mode mode, String packageSha) {
+              commits++;
+              committedMode = mode;
+              preferences.put("cold_runtime_root", identity);
+              preferences.put("cold_runtime_packages", packageSha);
+              preferences.put("cold_runtime_mode", mode.name());
+              if (mode == Mode.PROROOT_DYNAMIC) preferences.put("proroot_static_loader", false);
+              var stored = current.get();
+              var selected =
+                  new RuntimeHostPorts.Settings(
+                      stored.dnsMode,
+                      stored.engine,
+                      stored.staticLoader,
+                      "bxroot".equals(mode.runtime) ? stored.disableProotSeccomp : mode.noSeccomp);
+              current.set(selected);
+              return selected;
+            }
+          });
+    }
+
+    java.util.Map<String, Object> proof(String actualMode) {
+      java.util.Map<String, Object> proof = new java.util.HashMap<>();
+      proof.put("runtimeId", runtimeId);
+      proof.put("nonce", "a".repeat(32));
+      proof.put("port", 3080L);
+      proof.put("confirmedAt", 1L);
+      proof.put("runtimeMode", actualMode);
+      for (String check :
+          java.util.List.of(
+              "assets",
+              "nativeModules",
+              "process",
+              "authentication",
+              "localApi",
+              "renderer",
+              "dataRead",
+              "dataWrite",
+              "storageFreshReopened",
+              "processExited")) proof.put(check, true);
+      return proof;
+    }
+  }
+
+  @Test
+  public void fastColdPermissionIsExplicitAndDoesNotSelectTheInvocationRuntime() {
+    RuntimeHostPorts ordinary = new RuntimeHostPorts(), fresh = new RuntimeHostPorts();
+    ordinary.install(
+        provider(new AtomicReference<>(new RuntimeHostPorts.Settings("auto", false, true, false))));
+    fresh.install(
+        new RuntimeHostPorts.Provider() {
+          public RuntimeHostPorts.Settings snapshot() {
+            return new RuntimeHostPorts.Settings("auto", false, true, false);
+          }
+
+          public boolean preferFastColdMode() {
+            return true;
+          }
+
+          public void stage(String value) {}
+
+          public void record(String kind, String detail) {}
+
+          public void failure(Throwable error) {}
+        });
+    assertFalse(ordinary.preferFastColdMode());
+    try (var invocation = fresh.open()) {
+      assertTrue(fresh.preferFastColdMode());
+      assertFalse(fresh.settings().proroot);
+      assertTrue(fresh.settings().staticLoader);
+    }
+    assertFalse(fresh.settings().proroot);
+  }
+
+  @Test
+  public void applicationOwnersHaveIndependentSnapshotsAndDiagnosticHistories() {
+    RuntimeHostPorts first = new RuntimeHostPorts(), second = new RuntimeHostPorts();
+    first.install(
+        provider(new AtomicReference<>(new RuntimeHostPorts.Settings("auto", false, true, false))));
+    second.install(
+        provider(new AtomicReference<>(new RuntimeHostPorts.Settings("ipv4", true, false, true))));
+    RuntimeHostPorts.Owner firstOwner = () -> first, secondOwner = () -> second;
+    assertEquals(first, RuntimeHostPorts.fromOwner(firstOwner));
+    assertEquals(second, RuntimeHostPorts.fromOwner(secondOwner));
+    try (var invocation = first.open()) {
+      assertEquals("auto", first.settings().dnsMode);
+      assertEquals("ipv4", second.settings().dnsMode);
+    }
+    assertTrue(first.diagnosticFailures().isEmpty());
+    assertTrue(second.diagnosticFailures().isEmpty());
+    assertThrows(IllegalStateException.class, () -> RuntimeHostPorts.fromOwner(new Object()));
+    assertThrows(
+        IllegalStateException.class,
+        () -> RuntimeHostPorts.fromOwner((RuntimeHostPorts.Owner) () -> null));
+  }
+
+  @Test
+  public void sinkFailuresKeepTheirFirstCauseAndOrderedRedactedSnapshots() {
+    RuntimeHostPorts ports = new RuntimeHostPorts();
+    ports.install(
+        new RuntimeHostPorts.Provider() {
+          public RuntimeHostPorts.Settings snapshot() {
+            return new RuntimeHostPorts.Settings("auto", false, true, false);
+          }
+
+          public void stage(String s) {
+            throw new IllegalArgumentException("password=private-value\nsecond line");
+          }
+
+          public void record(String k, String d) {
+            throw new IllegalStateException("token=private-value");
+          }
+
+          public void failure(Throwable e) {
+            throw new UnsupportedOperationException("sink failed");
+          }
+        });
+    ports.stage("extract");
+    ports.record("RUN", "ignored");
+    var entries = ports.diagnosticFailures();
+    assertEquals(2, entries.size());
+    assertEquals("stage", entries.get(0).operation());
+    assertEquals("IllegalArgumentException", entries.get(0).type());
+    assertEquals("record:RUN", entries.get(1).operation());
+    assertFalse(ports.diagnosticFailure().contains("private-value"));
+    assertFalse(ports.diagnosticFailure().contains("second line"));
+    for (int i = 0; i < 12; i++) ports.failure(new IOException("operation"));
+    assertEquals(8, ports.diagnosticFailures().size());
+    assertTrue(ports.diagnosticFailure().contains("first: "));
+    assertTrue(ports.diagnosticFailure().contains("stage IllegalArgumentException"));
+    assertThrows(UnsupportedOperationException.class, () -> entries.clear());
+  }
+
+  @Test
+  public void restoringColdSelectionUpdatesExistingInvocationAndDoesNotReplayOtherSettings()
+      throws Exception {
+    RuntimeHostPorts ports = new RuntimeHostPorts();
+    var state = new AtomicReference<>(new RuntimeHostPorts.Settings("ipv4", true, true, false));
+    var prefs = new java.util.HashMap<String, Object>();
+    prefs.put("container_runtime", "proroot");
+    ports.install(
+        new RuntimeHostPorts.Provider() {
+          public RuntimeHostPorts.Settings snapshot() {
+            return state.get();
+          }
+
+          public void stage(String s) {}
+
+          public void record(String k, String d) {}
+
+          public void failure(Throwable e) {}
+
+          public java.util.Map<String, Object> snapshotColdSelection() {
+            return java.util.Map.copyOf(prefs);
+          }
+
+          public void restoreColdSelection(java.util.Map<String, Object> before, String root) {
+            org.junit.Assert.assertEquals(root, prefs.get("cold_runtime_root"));
+            prefs.clear();
+            prefs.putAll(before);
+            state.set(new RuntimeHostPorts.Settings("ipv4", true, true, false));
+          }
+
+          public RuntimeHostPorts.Settings successfulColdRuntime(
+              java.io.File root,
+              com.deepseekharness.app.util.ColdInstallPlan.Mode mode,
+              String sha) {
+            prefs.put("container_runtime", "proot");
+            prefs.put("cold_runtime_root", "new-root");
+            var next = new RuntimeHostPorts.Settings("ipv4", true, true, true);
+            state.set(next);
+            return next;
+          }
+        });
+    try (var invocation = ports.open()) {
+      var before = ports.snapshotColdSelection();
+      ports.successfulColdRuntime(
+          new java.io.File("root"),
+          com.deepseekharness.app.util.ColdInstallPlan.Mode.PROOT_COMPAT,
+          "0".repeat(64));
+      assertTrue(ports.settings().proroot);
+      ports.restoreColdSelection(before, "new-root");
+      assertTrue(ports.settings().proroot);
+      assertFalse(ports.settings().disableProotSeccomp);
+      assertEquals("ipv4", ports.settings().dnsMode);
+    }
+    assertTrue(ports.settings().proroot);
+  }
+
+  @Test
+  public void uninitializedProviderFailsClosed() {
+    RuntimeHostPorts ports = new RuntimeHostPorts();
+    assertThrows(IllegalStateException.class, ports::settings);
+    assertThrows(IllegalStateException.class, ports::open);
+    assertThrows(IllegalStateException.class, () -> ports.stage("extract"));
+  }
+
+  @Test
+  public void oneInvocationKeepsModeDnsAndFlagsTogetherThenNextSeesSwitch() {
+    RuntimeHostPorts ports = new RuntimeHostPorts();
+    AtomicReference<RuntimeHostPorts.Settings> current =
+        new AtomicReference<>(new RuntimeHostPorts.Settings("auto", false, true, false));
+    RuntimeHostPorts.Provider provider = provider(current);
+    ports.install(provider);
+    try (RuntimeHostPorts.Scope outer = ports.open()) {
+      assertEquals("auto", ports.settings().dnsMode);
+      assertFalse(ports.settings().proroot);
+      assertTrue(ports.settings().staticLoader);
+      current.set(new RuntimeHostPorts.Settings("ipv4", true, false, true));
+      try (RuntimeHostPorts.Scope inner = ports.open()) {
+        assertEquals("auto", ports.settings().dnsMode);
+        assertFalse(ports.settings().disableProotSeccomp);
+      }
+      assertFalse(ports.settings().proroot);
+    }
+    try (RuntimeHostPorts.Scope next = ports.open()) {
+      assertEquals("ipv4", ports.settings().dnsMode);
+      assertTrue(ports.settings().proroot);
+      assertFalse(ports.settings().staticLoader);
+      assertTrue(ports.settings().disableProotSeccomp);
+    }
+    assertThrows(IllegalStateException.class, () -> ports.install(provider(current)));
+  }
+
+  @Test
+  public void cancellationOrExceptionReleasesSnapshotAndDiagnosticFailureDoesNotMaskIt() {
+    RuntimeHostPorts ports = new RuntimeHostPorts();
+    AtomicReference<RuntimeHostPorts.Settings> current =
+        new AtomicReference<>(new RuntimeHostPorts.Settings("native", false, true, false));
+    ports.install(
+        new RuntimeHostPorts.Provider() {
+          @Override
+          public RuntimeHostPorts.Settings snapshot() {
+            return current.get();
+          }
+
+          @Override
+          public void stage(String value) {
+            throw new IllegalStateException("sink unavailable");
+          }
+
+          @Override
+          public void record(String kind, String detail) {
+            throw new IllegalStateException("sink unavailable");
+          }
+
+          @Override
+          public void failure(Throwable error) {
+            throw new IllegalStateException("sink unavailable");
+          }
+        });
+    assertThrows(
+        InterruptedException.class,
+        () -> {
+          try (RuntimeHostPorts.Scope ignored = ports.open()) {
+            assertEquals("native", ports.settings().dnsMode);
+            ports.failure(new InterruptedException("cancelled"));
+            throw new InterruptedException("cancelled");
+          }
+        });
+    assertTrue(ports.diagnosticFailure().contains("failure IllegalStateException"));
+    current.set(new RuntimeHostPorts.Settings("auto", false, true, false));
+    assertEquals("auto", ports.settings().dnsMode);
+  }
+
+  private static RuntimeHostPorts.Provider provider(
+      AtomicReference<RuntimeHostPorts.Settings> current) {
+    return new RuntimeHostPorts.Provider() {
+      @Override
+      public RuntimeHostPorts.Settings snapshot() {
+        return current.get();
+      }
+
+      @Override
+      public void stage(String value) {}
+
+      @Override
+      public void record(String kind, String detail) {}
+
+      @Override
+      public void failure(Throwable error) {}
+    };
+  }
+
+  @Test
+  public void verifiedSelectionUpdatesTheOpenInvocationAndTheNextInvocationTogether()
+      throws Exception {
+    RuntimeHostPorts ports = new RuntimeHostPorts();
+    var current = new AtomicReference<>(new RuntimeHostPorts.Settings("ipv4", true, true, false));
+    ports.install(
+        new RuntimeHostPorts.Provider() {
+          @Override
+          public RuntimeHostPorts.Settings snapshot() {
+            return current.get();
+          }
+
+          @Override
+          public void stage(String value) {}
+
+          @Override
+          public void record(String kind, String detail) {}
+
+          @Override
+          public void failure(Throwable error) {}
+
+          @Override
+          public RuntimeHostPorts.Settings successfulColdRuntime(
+              java.io.File root,
+              com.deepseekharness.app.util.ColdInstallPlan.Mode mode,
+              String sha) {
+            var value =
+                new RuntimeHostPorts.Settings(
+                    current.get().dnsMode, true, current.get().staticLoader, true);
+            current.set(value);
+            return value;
+          }
+        });
+    try (var scope = ports.open()) {
+      assertTrue(ports.settings().proroot);
+      assertFalse(ports.settings().disableProotSeccomp);
+      ports.successfulColdRuntime(
+          new java.io.File("prepared"),
+          com.deepseekharness.app.util.ColdInstallPlan.Mode.PROOT_COMPAT,
+          "0".repeat(64));
+      assertTrue(ports.settings().proroot);
+      assertTrue(ports.settings().disableProotSeccomp);
+      assertEquals("ipv4", ports.settings().dnsMode);
+      try (var nested = ports.open()) {
+        assertTrue(ports.settings().disableProotSeccomp);
+      }
+    }
+    assertTrue(ports.settings().proroot);
+    assertTrue(ports.settings().disableProotSeccomp);
+  }
+
+  @Test
+  public void missingSelectionAuthorityCannotChangeAnOpenRuntimeSnapshot() throws Exception {
+    RuntimeHostPorts ports = new RuntimeHostPorts();
+    var current = new AtomicReference<>(new RuntimeHostPorts.Settings("auto", true, true, false));
+    ports.install(provider(current));
+    try (var scope = ports.open()) {
+      assertThrows(
+          java.io.IOException.class,
+          () ->
+              ports.successfulColdRuntime(
+                  new java.io.File("prepared"),
+                  com.deepseekharness.app.util.ColdInstallPlan.Mode.PROOT_COMPAT,
+                  "0".repeat(64)));
+      assertTrue(ports.settings().proroot);
+      assertFalse(ports.settings().disableProotSeccomp);
+    }
+    assertTrue(current.get().proroot);
+    assertFalse(current.get().disableProotSeccomp);
+  }
+
+  @Test
+  public void loaderPreferenceChangedAfterProofCannotPublishProrootAsProven() throws Exception {
+    RuntimeHostPorts ports = new RuntimeHostPorts();
+    ports.install(
+        new RuntimeHostPorts.Provider() {
+          public RuntimeHostPorts.Settings snapshot() {
+            return new RuntimeHostPorts.Settings("auto", true, true, false);
+          }
+
+          public void stage(String s) {}
+
+          public void record(String k, String d) {}
+
+          public void failure(Throwable e) {}
+
+          public RuntimeHostPorts.Settings successfulColdRuntime(
+              java.io.File r, com.deepseekharness.app.util.ColdInstallPlan.Mode m, String s) {
+            return new RuntimeHostPorts.Settings("auto", true, false, false);
+          }
+        });
+    try (var scope = ports.open()) {
+      assertThrows(
+          java.io.IOException.class,
+          () ->
+              ports.successfulColdRuntime(
+                  new java.io.File("root"),
+                  com.deepseekharness.app.util.ColdInstallPlan.Mode.PROROOT,
+                  "0".repeat(64)));
+      assertTrue(ports.settings().staticLoader);
+    }
+  }
+}

@@ -1,0 +1,1910 @@
+{
+  "schema": 1,
+  "purpose": "Signed host-managed runtime inputs; the installer, descriptor and Gradle consume this same contract. User data and recovery runtime are outside this contract.",
+  "installs": [
+    {
+      "asset": "plugin-capabilities.py",
+      "target": "root/.dsh/plugin-capabilities.py",
+      "executable": false
+    },
+    {
+      "asset": "plugin-capabilities.cjs",
+      "target": "root/.dsh/plugin-capabilities.cjs",
+      "executable": false
+    },
+    {
+      "asset": "plugin-acorn.cjs",
+      "target": "root/.dsh/plugin-acorn.cjs",
+      "executable": false
+    },
+    {
+      "asset": "plugin-acorn.LICENSE",
+      "target": "root/.dsh/plugin-acorn.LICENSE",
+      "executable": false
+    },
+    {
+      "asset": "ca-certificates.crt",
+      "target": "usr/local/share/dsha/ca-certificates.crt",
+      "executable": false
+    },
+    {
+      "asset": "dns-compat.cjs",
+      "target": "usr/local/share/dsha/dns-compat.cjs",
+      "executable": false
+    },
+    {
+      "asset": "dsha-builtin.txt",
+      "target": "root/dsha-builtin.txt",
+      "executable": false
+    },
+    {
+      "asset": "plugin-manager.py",
+      "target": "root/.dsh/plugin-manager.py",
+      "executable": false
+    },
+    {
+      "asset": "plugin-network.py",
+      "target": "root/.dsh/plugin-network.py",
+      "executable": false
+    },
+    {
+      "asset": "plugin-lifecycle.py",
+      "target": "root/.dsh/plugin-lifecycle.py",
+      "executable": false
+    },
+    {
+      "asset": "plugin-dependencies.py",
+      "target": "root/.dsh/plugin-dependencies.py",
+      "executable": false
+    },
+    {
+      "asset": "plugin-transactions.py",
+      "target": "root/.dsh/plugin-transactions.py",
+      "executable": false
+    },
+    {
+      "asset": "backup-plugin-graph.py",
+      "target": "root/.dsh/backup-plugin-graph.py",
+      "executable": false
+    },
+    {
+      "asset": "rc1-migration.py",
+      "target": "root/.dsh/rc1-migration.py",
+      "executable": false
+    },
+    {
+      "asset": "rc1-settings-migration.cjs",
+      "target": "root/.dsh/rc1-settings-migration.cjs",
+      "executable": false
+    },
+    {
+      "asset": "plugin-semver.cjs",
+      "target": "root/.dsh/plugin-semver.cjs",
+      "executable": false
+    },
+    {
+      "asset": "register-builtin-plugins.py",
+      "target": "root/.dsh/register-builtin-plugins.py",
+      "executable": false
+    },
+    {
+      "asset": "startup-observer.cjs",
+      "target": "root/.dsh/startup-observer.cjs",
+      "executable": false
+    },
+    {
+      "asset": "device-shell-policy.py",
+      "target": "root/.dsh/device-shell-policy.py",
+      "executable": false
+    },
+    {
+      "asset": "adb-shell.py",
+      "target": "root/.dsh/adb-shell.py",
+      "executable": false
+    },
+    {
+      "asset": "dsha-device-shell.sh",
+      "target": "root/dsh-bin/adb-shell",
+      "executable": true
+    },
+    {
+      "asset": "app-integration/package.json",
+      "target": "root/dsha-app-integration/package.json",
+      "executable": false
+    },
+    {
+      "asset": "app-integration/cordis.patch.yml",
+      "target": "root/dsha-app-integration/cordis.patch.yml",
+      "executable": false
+    },
+    {
+      "asset": "app-integration/index.js",
+      "target": "root/dsha-app-integration/index.js",
+      "executable": false
+    },
+    {
+      "asset": "app-integration/activity.js",
+      "target": "root/dsha-app-integration/activity.js",
+      "executable": false
+    },
+    {
+      "asset": "app-integration/runtime-plugins.js",
+      "target": "root/dsha-app-integration/runtime-plugins.js",
+      "executable": false
+    },
+    {
+      "asset": "app-integration/client.js",
+      "target": "root/dsha-app-integration/client.js",
+      "executable": false
+    },
+    {
+      "asset": "builtin-plugins/dsh-device-shell-guide/package.json",
+      "target": "root/dsha-device-shell-guide/package.json",
+      "executable": false
+    },
+    {
+      "asset": "builtin-plugins/dsh-device-shell-guide/cordis.patch.yml",
+      "target": "root/dsha-device-shell-guide/cordis.patch.yml",
+      "executable": false
+    },
+    {
+      "asset": "builtin-plugins/dsh-device-shell-guide/lib/index.js",
+      "target": "root/dsha-device-shell-guide/lib/index.js",
+      "executable": false
+    },
+    {
+      "asset": "builtin-plugins/dsh-task-notifier/package.json",
+      "target": "root/dsha-task-notifier/package.json",
+      "executable": false
+    },
+    {
+      "asset": "builtin-plugins/dsh-task-notifier/cordis.patch.yml",
+      "target": "root/dsha-task-notifier/cordis.patch.yml",
+      "executable": false
+    },
+    {
+      "asset": "builtin-plugins/dsh-task-notifier/lib/index.js",
+      "target": "root/dsha-task-notifier/lib/index.js",
+      "executable": false
+    },
+    {
+      "asset": "builtin-plugins/dsh-status-overlay/package.json",
+      "target": "root/dsha-status-overlay/package.json",
+      "executable": false
+    },
+    {
+      "asset": "builtin-plugins/dsh-status-overlay/cordis.patch.yml",
+      "target": "root/dsha-status-overlay/cordis.patch.yml",
+      "executable": false
+    },
+    {
+      "asset": "builtin-plugins/dsh-status-overlay/lib/index.js",
+      "target": "root/dsha-status-overlay/lib/index.js",
+      "executable": false
+    },
+    {
+      "asset": "builtin-plugins/dsh-web-mobile/package.json",
+      "target": "root/dsha-web-mobile/package.json",
+      "executable": false
+    },
+    {
+      "asset": "builtin-plugins/dsh-web-mobile/cordis.patch.yml",
+      "target": "root/dsha-web-mobile/cordis.patch.yml",
+      "executable": false
+    },
+    {
+      "asset": "builtin-plugins/dsh-web-mobile/lib/index.js",
+      "target": "root/dsha-web-mobile/lib/index.js",
+      "executable": false
+    },
+    {
+      "asset": "builtin-plugins/dsh-web-mobile/lib/client.js",
+      "target": "root/dsha-web-mobile/lib/client.js",
+      "executable": false
+    },
+    {
+      "asset": "builtin-plugins/dsh-web-mobile/lib/compress.js",
+      "target": "root/dsha-web-mobile/lib/compress.js",
+      "executable": false
+    },
+    {
+      "asset": "builtin-plugins/dsh-web-mobile/lib/delete-session.js",
+      "target": "root/dsha-web-mobile/lib/delete-session.js",
+      "executable": false
+    },
+    {
+      "asset": "builtin-plugins/dsh-web-mobile/lib/reasoning-effort.js",
+      "target": "root/dsha-web-mobile/lib/reasoning-effort.js",
+      "executable": false
+    },
+    {
+      "asset": "builtin-plugins/dsh-web-mobile/LICENSE",
+      "target": "root/dsha-web-mobile/LICENSE",
+      "executable": false
+    },
+    {
+      "asset": "builtin-plugins/dsh-computer-use-android/package.json",
+      "target": "root/dsha-computer-use-android/package.json",
+      "executable": false
+    },
+    {
+      "asset": "builtin-plugins/dsh-computer-use-android/cordis.patch.yml",
+      "target": "root/dsha-computer-use-android/cordis.patch.yml",
+      "executable": false
+    },
+    {
+      "asset": "builtin-plugins/dsh-computer-use-android/lib/index.js",
+      "target": "root/dsha-computer-use-android/lib/index.js",
+      "executable": false
+    },
+    {
+      "asset": "builtin-plugins/dsh-computer-use-android/lib/server.cjs",
+      "target": "root/dsha-computer-use-android/lib/server.cjs",
+      "executable": false
+    },
+    {
+      "asset": "builtin-plugins/dsh-auto-review/package.json",
+      "target": "root/dsha-auto-review/package.json",
+      "executable": false
+    },
+    {
+      "asset": "builtin-plugins/dsh-auto-review/cordis.patch.yml",
+      "target": "root/dsha-auto-review/cordis.patch.yml",
+      "executable": false
+    },
+    {
+      "asset": "builtin-plugins/dsh-auto-review/lib/index.js",
+      "target": "root/dsha-auto-review/lib/index.js",
+      "executable": false
+    },
+    {
+      "asset": "builtin-plugins/dsh-tool-vscreen/package.json",
+      "target": "root/dsha-tool-vscreen/package.json",
+      "executable": false
+    },
+    {
+      "asset": "builtin-plugins/dsh-tool-vscreen/cordis.patch.yml",
+      "target": "root/dsha-tool-vscreen/cordis.patch.yml",
+      "executable": false
+    },
+    {
+      "asset": "builtin-plugins/dsh-tool-vscreen/lib/index.js",
+      "target": "root/dsha-tool-vscreen/lib/index.js",
+      "executable": false
+    },
+    {
+      "asset": "builtin-plugins/dsh-tool-vscreen/lib/server.cjs",
+      "target": "root/dsha-tool-vscreen/lib/server.cjs",
+      "executable": false
+    },
+    {
+      "asset": "dsha-plugin.sh",
+      "target": "root/dsh-bin/dsha-plugin",
+      "executable": true
+    },
+    {
+      "asset": "install-ubuntu-tools.sh",
+      "target": "root/dsh-bin/install-ubuntu-tools",
+      "executable": true
+    },
+    {
+      "asset": "dsha-runtime-env.sh",
+      "target": "etc/profile.d/dsha-runtime-env.sh",
+      "executable": false
+    },
+    {
+      "asset": "runtime-tools.json",
+      "target": "root/.dsh/runtime-tools.json",
+      "executable": false
+    },
+    {
+      "asset": "builtin-plugins.json",
+      "target": "root/.dsh/builtin-plugins.json",
+      "executable": false
+    },
+    {
+      "asset": "credential-paths.json",
+      "target": "root/.dsh/credential-paths.json",
+      "executable": false
+    },
+    {
+      "asset": "adb-wheels.lock.json",
+      "target": "root/.dsh/adb-wheels.lock.json",
+      "executable": false
+    },
+    {
+      "asset": "runtime-patches.json",
+      "target": "root/.dsh/runtime-patches.json",
+      "executable": false
+    },
+    {
+      "asset": "bridge-token-compat.cjs",
+      "target": "root/.dsh/bridge-token-compat.cjs",
+      "executable": false
+    },
+    {
+      "asset": "credential-yaml-filter.cjs",
+      "target": "root/.dsh/credential-yaml-filter.cjs",
+      "executable": false
+    },
+    {
+      "asset": "legacy-preset-convert.cjs",
+      "target": "root/.dsh/legacy-preset-convert.cjs",
+      "executable": false
+    },
+    {
+      "asset": "adb-pair.py",
+      "target": "root/.dsh/adb-pair.py",
+      "executable": true
+    },
+    {
+      "asset": "adb-setup.sh",
+      "target": "root/.dsh/adb-setup.sh",
+      "executable": true
+    },
+    {
+      "asset": "adb-script-version",
+      "target": "root/.dsh/script-version",
+      "executable": false
+    },
+    {
+      "asset": "builtin-plugins/dsh-destructive-guard/cordis.patch.yml",
+      "target": "root/dsha-destructive-guard/cordis.patch.yml",
+      "executable": false
+    },
+    {
+      "asset": "builtin-plugins/dsh-destructive-guard/package.json",
+      "target": "root/dsha-destructive-guard/package.json",
+      "executable": false
+    },
+    {
+      "asset": "builtin-plugins/dsh-destructive-guard/lib/destructive.js",
+      "target": "root/dsha-destructive-guard/lib/destructive.js",
+      "executable": false
+    },
+    {
+      "asset": "builtin-plugins/dsh-destructive-guard/lib/index.js",
+      "target": "root/dsha-destructive-guard/lib/index.js",
+      "executable": false
+    },
+    {
+      "asset": "builtin-plugins/dsh-destructive-guard/lib/workdir.js",
+      "target": "root/dsha-destructive-guard/lib/workdir.js",
+      "executable": false
+    },
+    {
+      "asset": "app-integration/browser-origin-state.js",
+      "target": "root/dsha-app-integration/browser-origin-state.js",
+      "executable": false
+    },
+    {
+      "asset": "app-integration/browser-origin-restore.html",
+      "target": "root/dsha-app-integration/browser-origin-restore.html",
+      "executable": false
+    },
+    {
+      "asset": "plugin-client-seeds.py",
+      "target": "root/.dsh/plugin-client-seeds.py",
+      "executable": true
+    },
+    {
+      "asset": "client-seed-proof.json",
+      "target": "root/.dsh/client-seed-proof.json",
+      "executable": false
+    },
+    {
+      "asset": "client-peer-attestations.json",
+      "target": "root/.dsh/client-peer-attestations.json",
+      "executable": false
+    },
+    {
+      "asset": "dsha-portable",
+      "target": "root/dsh-bin/dsha-portable",
+      "executable": true
+    },
+    {
+      "asset": "pc-migration/README.md",
+      "target": "usr/local/share/dsha/pc-migration/README.md",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/dsha-portable-restore.mjs",
+      "target": "usr/local/share/dsha/pc-migration/dsha-portable-restore.mjs",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/dsha-portable.py",
+      "target": "usr/local/share/dsha/pc-migration/dsha-portable.py",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/LICENSE",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/LICENSE",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/README.md",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/README.md",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/bin.mjs",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/bin.mjs",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/compose/compose-collection.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/compose/compose-collection.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/compose/compose-doc.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/compose/compose-doc.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/compose/compose-node.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/compose/compose-node.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/compose/compose-scalar.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/compose/compose-scalar.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/compose/composer.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/compose/composer.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/compose/resolve-block-map.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/compose/resolve-block-map.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/compose/resolve-block-scalar.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/compose/resolve-block-scalar.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/compose/resolve-block-seq.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/compose/resolve-block-seq.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/compose/resolve-end.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/compose/resolve-end.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/compose/resolve-flow-collection.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/compose/resolve-flow-collection.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/compose/resolve-flow-scalar.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/compose/resolve-flow-scalar.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/compose/resolve-props.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/compose/resolve-props.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/compose/util-contains-newline.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/compose/util-contains-newline.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/compose/util-empty-scalar-position.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/compose/util-empty-scalar-position.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/compose/util-flow-indent-check.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/compose/util-flow-indent-check.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/compose/util-map-includes.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/compose/util-map-includes.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/doc/Document.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/doc/Document.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/doc/anchors.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/doc/anchors.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/doc/applyReviver.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/doc/applyReviver.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/doc/createNode.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/doc/createNode.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/doc/directives.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/doc/directives.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/errors.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/errors.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/index.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/index.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/log.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/log.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/nodes/Alias.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/nodes/Alias.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/nodes/Collection.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/nodes/Collection.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/nodes/Node.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/nodes/Node.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/nodes/Pair.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/nodes/Pair.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/nodes/Scalar.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/nodes/Scalar.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/nodes/YAMLMap.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/nodes/YAMLMap.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/nodes/YAMLSeq.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/nodes/YAMLSeq.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/nodes/addPairToJSMap.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/nodes/addPairToJSMap.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/nodes/identity.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/nodes/identity.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/nodes/toJS.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/nodes/toJS.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/parse/cst-scalar.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/parse/cst-scalar.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/parse/cst-stringify.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/parse/cst-stringify.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/parse/cst-visit.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/parse/cst-visit.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/parse/cst.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/parse/cst.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/parse/lexer.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/parse/lexer.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/parse/line-counter.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/parse/line-counter.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/parse/parser.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/parse/parser.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/public-api.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/public-api.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/schema/Schema.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/schema/Schema.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/schema/common/map.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/schema/common/map.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/schema/common/null.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/schema/common/null.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/schema/common/seq.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/schema/common/seq.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/schema/common/string.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/schema/common/string.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/schema/core/bool.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/schema/core/bool.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/schema/core/float.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/schema/core/float.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/schema/core/int.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/schema/core/int.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/schema/core/schema.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/schema/core/schema.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/schema/json/schema.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/schema/json/schema.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/schema/tags.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/schema/tags.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/schema/yaml-1.1/binary.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/schema/yaml-1.1/binary.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/schema/yaml-1.1/bool.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/schema/yaml-1.1/bool.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/schema/yaml-1.1/float.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/schema/yaml-1.1/float.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/schema/yaml-1.1/int.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/schema/yaml-1.1/int.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/schema/yaml-1.1/merge.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/schema/yaml-1.1/merge.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/schema/yaml-1.1/omap.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/schema/yaml-1.1/omap.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/schema/yaml-1.1/pairs.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/schema/yaml-1.1/pairs.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/schema/yaml-1.1/schema.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/schema/yaml-1.1/schema.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/schema/yaml-1.1/set.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/schema/yaml-1.1/set.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/schema/yaml-1.1/timestamp.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/schema/yaml-1.1/timestamp.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/stringify/foldFlowLines.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/stringify/foldFlowLines.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/stringify/stringify.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/stringify/stringify.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/stringify/stringifyCollection.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/stringify/stringifyCollection.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/stringify/stringifyComment.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/stringify/stringifyComment.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/stringify/stringifyDocument.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/stringify/stringifyDocument.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/stringify/stringifyNumber.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/stringify/stringifyNumber.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/stringify/stringifyPair.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/stringify/stringifyPair.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/stringify/stringifyString.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/stringify/stringifyString.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/util.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/util.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/dist/visit.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/dist/visit.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/index.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/index.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/browser/package.json",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/browser/package.json",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/cli.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/cli.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/cli.mjs",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/cli.mjs",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/compose/compose-collection.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/compose/compose-collection.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/compose/compose-collection.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/compose/compose-collection.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/compose/compose-doc.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/compose/compose-doc.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/compose/compose-doc.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/compose/compose-doc.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/compose/compose-node.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/compose/compose-node.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/compose/compose-node.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/compose/compose-node.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/compose/compose-scalar.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/compose/compose-scalar.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/compose/compose-scalar.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/compose/compose-scalar.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/compose/composer.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/compose/composer.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/compose/composer.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/compose/composer.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/compose/resolve-block-map.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/compose/resolve-block-map.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/compose/resolve-block-map.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/compose/resolve-block-map.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/compose/resolve-block-scalar.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/compose/resolve-block-scalar.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/compose/resolve-block-scalar.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/compose/resolve-block-scalar.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/compose/resolve-block-seq.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/compose/resolve-block-seq.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/compose/resolve-block-seq.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/compose/resolve-block-seq.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/compose/resolve-end.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/compose/resolve-end.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/compose/resolve-end.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/compose/resolve-end.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/compose/resolve-flow-collection.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/compose/resolve-flow-collection.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/compose/resolve-flow-collection.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/compose/resolve-flow-collection.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/compose/resolve-flow-scalar.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/compose/resolve-flow-scalar.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/compose/resolve-flow-scalar.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/compose/resolve-flow-scalar.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/compose/resolve-props.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/compose/resolve-props.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/compose/resolve-props.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/compose/resolve-props.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/compose/util-contains-newline.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/compose/util-contains-newline.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/compose/util-contains-newline.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/compose/util-contains-newline.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/compose/util-empty-scalar-position.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/compose/util-empty-scalar-position.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/compose/util-empty-scalar-position.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/compose/util-empty-scalar-position.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/compose/util-flow-indent-check.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/compose/util-flow-indent-check.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/compose/util-flow-indent-check.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/compose/util-flow-indent-check.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/compose/util-map-includes.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/compose/util-map-includes.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/compose/util-map-includes.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/compose/util-map-includes.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/doc/Document.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/doc/Document.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/doc/Document.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/doc/Document.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/doc/anchors.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/doc/anchors.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/doc/anchors.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/doc/anchors.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/doc/applyReviver.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/doc/applyReviver.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/doc/applyReviver.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/doc/applyReviver.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/doc/createNode.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/doc/createNode.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/doc/createNode.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/doc/createNode.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/doc/directives.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/doc/directives.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/doc/directives.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/doc/directives.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/errors.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/errors.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/errors.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/errors.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/index.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/index.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/index.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/index.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/log.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/log.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/log.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/log.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/nodes/Alias.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/nodes/Alias.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/nodes/Alias.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/nodes/Alias.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/nodes/Collection.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/nodes/Collection.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/nodes/Collection.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/nodes/Collection.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/nodes/Node.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/nodes/Node.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/nodes/Node.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/nodes/Node.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/nodes/Pair.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/nodes/Pair.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/nodes/Pair.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/nodes/Pair.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/nodes/Scalar.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/nodes/Scalar.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/nodes/Scalar.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/nodes/Scalar.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/nodes/YAMLMap.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/nodes/YAMLMap.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/nodes/YAMLMap.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/nodes/YAMLMap.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/nodes/YAMLSeq.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/nodes/YAMLSeq.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/nodes/YAMLSeq.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/nodes/YAMLSeq.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/nodes/addPairToJSMap.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/nodes/addPairToJSMap.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/nodes/addPairToJSMap.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/nodes/addPairToJSMap.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/nodes/identity.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/nodes/identity.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/nodes/identity.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/nodes/identity.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/nodes/toJS.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/nodes/toJS.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/nodes/toJS.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/nodes/toJS.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/options.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/options.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/parse/cst-scalar.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/parse/cst-scalar.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/parse/cst-scalar.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/parse/cst-scalar.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/parse/cst-stringify.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/parse/cst-stringify.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/parse/cst-stringify.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/parse/cst-stringify.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/parse/cst-visit.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/parse/cst-visit.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/parse/cst-visit.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/parse/cst-visit.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/parse/cst.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/parse/cst.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/parse/cst.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/parse/cst.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/parse/lexer.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/parse/lexer.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/parse/lexer.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/parse/lexer.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/parse/line-counter.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/parse/line-counter.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/parse/line-counter.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/parse/line-counter.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/parse/parser.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/parse/parser.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/parse/parser.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/parse/parser.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/public-api.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/public-api.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/public-api.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/public-api.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/schema/Schema.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/schema/Schema.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/schema/Schema.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/schema/Schema.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/schema/common/map.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/schema/common/map.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/schema/common/map.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/schema/common/map.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/schema/common/null.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/schema/common/null.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/schema/common/null.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/schema/common/null.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/schema/common/seq.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/schema/common/seq.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/schema/common/seq.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/schema/common/seq.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/schema/common/string.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/schema/common/string.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/schema/common/string.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/schema/common/string.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/schema/core/bool.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/schema/core/bool.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/schema/core/bool.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/schema/core/bool.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/schema/core/float.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/schema/core/float.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/schema/core/float.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/schema/core/float.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/schema/core/int.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/schema/core/int.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/schema/core/int.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/schema/core/int.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/schema/core/schema.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/schema/core/schema.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/schema/core/schema.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/schema/core/schema.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/schema/json-schema.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/schema/json-schema.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/schema/json/schema.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/schema/json/schema.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/schema/json/schema.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/schema/json/schema.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/schema/tags.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/schema/tags.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/schema/tags.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/schema/tags.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/schema/types.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/schema/types.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/schema/yaml-1.1/binary.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/schema/yaml-1.1/binary.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/schema/yaml-1.1/binary.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/schema/yaml-1.1/binary.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/schema/yaml-1.1/bool.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/schema/yaml-1.1/bool.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/schema/yaml-1.1/bool.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/schema/yaml-1.1/bool.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/schema/yaml-1.1/float.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/schema/yaml-1.1/float.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/schema/yaml-1.1/float.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/schema/yaml-1.1/float.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/schema/yaml-1.1/int.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/schema/yaml-1.1/int.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/schema/yaml-1.1/int.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/schema/yaml-1.1/int.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/schema/yaml-1.1/merge.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/schema/yaml-1.1/merge.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/schema/yaml-1.1/merge.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/schema/yaml-1.1/merge.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/schema/yaml-1.1/omap.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/schema/yaml-1.1/omap.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/schema/yaml-1.1/omap.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/schema/yaml-1.1/omap.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/schema/yaml-1.1/pairs.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/schema/yaml-1.1/pairs.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/schema/yaml-1.1/pairs.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/schema/yaml-1.1/pairs.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/schema/yaml-1.1/schema.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/schema/yaml-1.1/schema.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/schema/yaml-1.1/schema.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/schema/yaml-1.1/schema.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/schema/yaml-1.1/set.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/schema/yaml-1.1/set.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/schema/yaml-1.1/set.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/schema/yaml-1.1/set.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/schema/yaml-1.1/timestamp.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/schema/yaml-1.1/timestamp.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/schema/yaml-1.1/timestamp.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/schema/yaml-1.1/timestamp.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/stringify/foldFlowLines.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/stringify/foldFlowLines.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/stringify/foldFlowLines.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/stringify/foldFlowLines.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/stringify/stringify.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/stringify/stringify.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/stringify/stringify.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/stringify/stringify.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/stringify/stringifyCollection.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/stringify/stringifyCollection.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/stringify/stringifyCollection.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/stringify/stringifyCollection.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/stringify/stringifyComment.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/stringify/stringifyComment.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/stringify/stringifyComment.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/stringify/stringifyComment.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/stringify/stringifyDocument.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/stringify/stringifyDocument.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/stringify/stringifyDocument.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/stringify/stringifyDocument.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/stringify/stringifyNumber.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/stringify/stringifyNumber.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/stringify/stringifyNumber.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/stringify/stringifyNumber.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/stringify/stringifyPair.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/stringify/stringifyPair.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/stringify/stringifyPair.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/stringify/stringifyPair.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/stringify/stringifyString.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/stringify/stringifyString.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/stringify/stringifyString.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/stringify/stringifyString.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/test-events.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/test-events.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/test-events.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/test-events.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/util.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/util.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/util.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/util.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/visit.d.ts",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/visit.d.ts",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/dist/visit.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/dist/visit.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/package.json",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/package.json",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/node_modules/yaml/util.js",
+      "target": "usr/local/share/dsha/pc-migration/node_modules/yaml/util.js",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/package-lock.json",
+      "target": "usr/local/share/dsha/pc-migration/package-lock.json",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/package.json",
+      "target": "usr/local/share/dsha/pc-migration/package.json",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/portable-core.mjs",
+      "target": "usr/local/share/dsha/pc-migration/portable-core.mjs",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/portable-plan.json",
+      "target": "usr/local/share/dsha/pc-migration/portable-plan.json",
+      "executable": false
+    },
+    {
+      "asset": "pc-migration/portable-yaml.mjs",
+      "target": "usr/local/share/dsha/pc-migration/portable-yaml.mjs",
+      "executable": false
+    },
+    {
+      "asset": "destructive-policy/index.js",
+      "target": "usr/local/lib/node_modules/@deepseek-ai/dsh/node_modules/dsha-destructive-policy/index.js",
+      "executable": false
+    },
+    {
+      "asset": "destructive-policy/package.json",
+      "target": "usr/local/lib/node_modules/@deepseek-ai/dsh/node_modules/dsha-destructive-policy/package.json",
+      "executable": false
+    },
+    {
+      "asset": "destructive-policy/destructive.js",
+      "target": "usr/local/lib/node_modules/@deepseek-ai/dsh/node_modules/dsha-destructive-policy/destructive.js",
+      "executable": false
+    },
+    {
+      "asset": "destructive-policy/workdir.js",
+      "target": "usr/local/lib/node_modules/@deepseek-ai/dsh/node_modules/dsha-destructive-policy/workdir.js",
+      "executable": false
+    }
+  ],
+  "assetFiles": [
+    "client-combo-patch.json",
+    "composer-enter-patch.json",
+    "conversation-materialized-patch.json",
+    "deepseek-messages-compat-patch.json",
+    "dsh-runtime.bin",
+    "dsha-deepseek-messages-compat.js",
+    "glibc-python.tar.gz",
+    "language-patch.json",
+    "lexical-claim-patch.json",
+    "office-fonts-patch.json",
+    "offline-rootfs.bin",
+    "offline-rootfs.version",
+    "pdf-compat-patch.json",
+    "persona-compat-patch.json",
+    "plugin-manager-auto-enable-patch.json",
+    "plugin-manager-policy-patch.json",
+    "queue-agent-patch.json",
+    "queue-dock-patch.json",
+    "pnpm-runtime.bin",
+    "profile-settings-review.js",
+    "rc1-settings-migration-patch.json",
+    "runtime-trial-entry.js",
+    "runtime-trial-page.js",
+    "runtime-trial-plugin.js",
+    "session-interaction-patch.json",
+    "subagent-navigation-patch.json",
+    "tooltip-entry-patch.json",
+    "tooltip-interaction-patch.json",
+    "ubuntu-tools.bin",
+    "ubuntu-tools.layout",
+    "ubuntu-tools.manifest.json",
+    "workspace-directory-policy-patch.json",
+    "frontend-static-cache-patch.json",
+    "sidebar-layout-recovery-patch.json",
+    "dsha-layout-recovery.js",
+    "portable-tools.manifest.json",
+    "bxroot-native-lock.json",
+    "licenses/DSHA-MIT.txt",
+    "licenses/bxroot-MIT.txt",
+    "licenses/bxroot-glibc-COPYING.LIB.txt",
+    "licenses/bxroot-glibc-copyright.txt",
+    "licenses/bxroot-gcc-copyright.txt",
+    "licenses/GCC-RUNTIME-EXCEPTION-3.1.txt"
+  ],
+  "assetTrees": [
+    "web-integration",
+    "app-integration",
+    "client-combo-cache",
+    "destructive-policy"
+  ],
+  "launcherTrees": [
+    "app/src/main/jniLibs",
+    "app/src/low/jniLibs",
+    "app/src/main/java/com/deepseekharness/app/runtime",
+    "app/src/main/java/com/deepseekharness/app/backup"
+  ],
+  "launcherSources": [
+    "util/IsolatedCommand.java",
+    "util/PluginDownloadSource.java",
+    "backup/RuntimeTrialRecords.java",
+    "util/WebProcSel.java",
+    "util/WebPidIdentity.java",
+    "util/ManagedRuntimeLayout.java",
+    "util/ManagedAssetVersion.java",
+    "util/ManagedInstallPath.java",
+    "util/MaintenanceGate.java",
+    "util/RuntimeWorkPort.java",
+    "util/GuestCommandOutcome.java",
+    "backup/HostMaintenancePending.java",
+    "core/RuntimeTasks.java",
+    "core/MaintenanceCoordinator.java",
+    "core/ConfigStore.java",
+    "core/HarnessController.java",
+    "core/TerminalSessionOwner.java",
+    "core/SimpleTerminalBackend.java",
+    "util/TerminalSession.java",
+    "util/TerminalReady.java",
+    "util/TerminalTabs.java",
+    "DshaApp.java",
+    "PtySession.java",
+    "util/ColdInstallPlan.java",
+    "util/ColdInstallPackages.java",
+    "util/PermissionMode.java",
+    "util/ColdRuntimeSelection.java",
+    "util/Ids.java",
+    "util/GuestPaths.java",
+    "util/BackupScopes.java",
+    "util/NpmPackageName.java",
+    "util/BuiltinPluginRegistry.java",
+    "util/CredentialPathRules.java",
+    "util/CredentialPaths.java",
+    "util/BackupTaskKinds.java",
+    "util/ManagedPatchChain.java",
+    "util/DiagnosticFailures.java",
+    "util/BundledRootfsAsset.java",
+    "util/AndroidGroupMap.java",
+    "util/BoundedOutputDrain.java",
+    "util/InstallStage.java",
+    "util/InstallFailure.java",
+    "core/StartupPipeline.java",
+    "core/WebOutputSession.java",
+    "core/WebStopCoordinator.java",
+    "core/DiagnosticHistory.java",
+    "core/DiagnosticLog.java",
+    "HttpShellService.java",
+    "DshaAccessibilityService.java",
+    "bridge/AdbBridge.java",
+    "util/SensitiveData.java",
+    "recovery/RecoveryStoragePlan.java",
+    "runtime/GuestPreparationFailure.java",
+    "util/StartupPageGate.java",
+    "HarnessService.java",
+    "util/DshAuthSession.java",
+    "util/DshAuthUrl.java",
+    "util/HttpProtocol.java",
+    "util/WebHealthProbe.java",
+    "util/VscreenBridgeRequest.java",
+    "util/TouchGestureDispatch.java",
+    "util/ManagedRuntimePaths.java",
+    "util/ProcStat.java",
+    "util/DiagnosticReport.java",
+    "util/StorageCategoryLabels.java",
+    "util/ScheduledBackupOwner.java",
+    "util/FileKind.java",
+    "util/NotificationIds.java",
+    "util/RuntimeTrialOutputPolicy.java",
+    "util/InstallProbe.java",
+    "util/BridgeRoutes.java",
+    "util/ProcessPipePoller.java",
+    "util/ApplicationOwner.java",
+    "core/HarnessSessionState.java",
+    "core/WebReadyTasks.java",
+    "util/WebLaunchCommand.java",
+    "util/LanAddressPolicy.java",
+    "util/ResolverConfig.java",
+    "util/ContainerFileTransfers.java",
+    "util/BridgeCredentialAuth.java",
+    "util/BridgeCredentialFiles.java",
+    "util/SelfPackageIdentity.java",
+    "util/DeviceAppPolicy.java",
+    "util/DeviceShellPolicy.java",
+    "util/ScreenTarget.java",
+    "util/SensitiveAppPolicy.java",
+    "util/VirtualScreenRequestFence.java",
+    "util/CoalescingPoller.java",
+    "DeviceBridgeService.java",
+    "DeviceShellExecutor.java",
+    "ShellService.java",
+    "RootShell.java",
+    "RootShellMain.java",
+    "vscreen/VirtualScreenCore.java",
+    "vscreen/VirtualScreenManager.java",
+    "vscreen/VirtualScreenPreviews.java",
+    "core/WebLifecycleController.java",
+    "core/LanAuthBridge.java",
+    "core/HostConfigService.java",
+    "core/WebProcessSession.java",
+    "core/StartupEnvironmentActions.java",
+    "core/StartupIssueBudget.java",
+    "core/PluginJournalRecovery.java",
+    "core/BackupTask.java",
+    "core/InstallRepository.java",
+    "util/ApplicationServiceSlot.java",
+    "util/Rc1MigrationReuse.java",
+    "util/RootShellCandidates.java",
+    "DeviceFileCore.java",
+    "bridge/AndroidDeviceFiles.java",
+    "bridge/AppDeviceActions.java",
+    "util/DeviceFileOperations.java",
+    "util/LanTokenState.java",
+    "util/LanFailureResponse.java",
+    "util/VirtualScreenBootstrap.java",
+    "util/DeviceScriptProof.java",
+    "util/PrivilegedContextFailure.java",
+    "util/ProcessBirthHandshake.java",
+    "util/TrialWaitBudget.java",
+    "util/WebForceStop.java",
+    "util/WebStopDiagnostic.java",
+    "util/WebStopException.java",
+    "data/PortableSettings.java",
+    "vscreen/VirtualScreenAccessibility.java",
+    "util/AdbWheelPaths.java",
+    "util/AdbDependencyPreparation.java",
+    "util/AdbWheelCache.java",
+    "util/WebPortSettings.java",
+    "util/WebPortPolicy.java",
+    "LanProxyService.java",
+    "ui/BrowserOriginRestore.java",
+    "ui/BrowserOriginRestoreActivity.java",
+    "ui/BrowserOriginRestoreServer.java",
+    "ui/BrowserOriginRestoreWebView.java",
+    "util/WebUploadSourceRetry.java",
+    "util/WebUploadStream.java",
+    "util/WebUploadDiskBudget.java",
+    "util/WebAuthLineBuffer.java",
+    "util/ScratchPaths.java",
+    "util/RegenerableCachePaths.java",
+    "util/PortableExportPlan.java",
+    "util/BoundedProcessRunner.java",
+    "util/AccessibilityDumpBounds.java",
+    "util/BridgeConfirmations.java",
+    "util/ScreenActionResult.java",
+    "util/VirtualScreenErrors.java",
+    "util/VirtualScreenFailures.java",
+    "util/VirtualScreenInputPolicy.java",
+    "util/VirtualScreenInputResult.java",
+    "util/VirtualScreenPolicy.java",
+    "util/VirtualScreenRoutes.java",
+    "util/VirtualScreenStroke.java",
+    "util/VirtualScreenWindowPolicy.java",
+    "core/ColdSetupTiming.java",
+    "util/RuntimeEnginePolicy.java",
+    "util/RuntimeCapabilityProbe.java",
+    "util/AgentTaskState.java",
+    "util/AgentTaskRegistration.java",
+    "util/RuntimeInstanceRegistry.java",
+    "util/WebRuntimeFallback.java",
+    "util/InstallProcess.java",
+    "util/AccessibilityTreeBudget.java",
+    "util/ScreenConfirmationPolicy.java"
+  ],
+  "generatorSources": [
+    "tools/mobile-server/compress.js",
+    "tools/mobile-server/delete-session.js",
+    "tools/mobile-server/index.js",
+    "tools/apply-mobile-client-patches.mjs",
+    "tools/generate-builtin-plugins.py",
+    "tools/generate-credential-paths.py",
+    "tools/prepare-runtime-tools.py",
+    "tools/runtime-tools.lock.json",
+    "tools/asset-deployment.json",
+    "tools/asset_deployment.py",
+    "tools/prepare-standard-assets.py",
+    "tools/verify-asset-deployment.py",
+    "tools/source_text.py",
+    "tools/backup-dependencies.lock.json",
+    "app/src/standard/java/com/deepseekharness/app/ui/BrowserOriginRestoreFactory.java",
+    "app/src/low/java/com/deepseekharness/app/ui/BrowserOriginRestoreFactory.java",
+    "tools/pc-migration/dsha-portable-restore.mjs",
+    "tools/pc-migration/dsha-portable.py",
+    "tools/pc-migration/generate-plan.py",
+    "tools/pc-migration/package-lock.json",
+    "tools/pc-migration/package.json",
+    "tools/pc-migration/portable-core.mjs",
+    "tools/pc-migration/portable-plan.json",
+    "tools/pc-migration/portable-yaml.mjs",
+    "tools/pc-migration/prepare-assets.py",
+    "tools/pc-migration/README.md",
+    "tools/pc-migration/vendor/yaml-2.9.1.tgz",
+    "tools/generate-third-party-notices.py",
+    "tools/mobile-plugin-upstream.lock.json",
+    "tools/prepare-mobile-plugin.py",
+    "tools/mobile-viewport-sync.js",
+    "tools/mobile-plugin-upstream/lib/client.js",
+    "tools/mobile-plugin-upstream/lib/compress.js",
+    "tools/mobile-plugin-upstream/lib/delete-session.js",
+    "tools/mobile-plugin-upstream/lib/index.js",
+    "tools/native_runtime_proof.py",
+    "tools/prepare-bxroot-native-proof.py",
+    "tools/native-packaging.lock.json",
+    "tools/bxroot/lock.json",
+    "tools/bxroot/build.py",
+    "tools/bxroot/build-linux.sh",
+    "tools/bxroot/overlay.py",
+    "tools/bxroot/test-linux.py",
+    "tools/bxroot/probe.c",
+    "tools/bxroot/static-exec.S",
+    "tools/native-dependencies.lock.json",
+    "tools/native-session/build.py",
+    "tools/native-session/session-launcher.c",
+    "tools/plugin-capabilities/package.json",
+    "tools/plugin-capabilities/package-lock.json",
+    "tools/plugin-capabilities/parser-lock.json",
+    "tools/vendor-plugin-capabilities.cjs",
+    "tools/termux-jni/dsha-pty.c",
+    "tools/termux-jni/dsha-process.c",
+    "tools/termux-jni/build.ps1"
+  ]
+}
